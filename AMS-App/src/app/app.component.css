@@ -1,0 +1,62 @@
+mat-toolbar {
+  height: 8%;
+}
+
+mat-drawer-container {
+  height: 92%;
+}
+
+mat-drawer,
+mat-drawer-content {
+  height: 100%;
+}
+
+li {
+  list-style: none;
+  font-size: large;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+mat-drawer div a {
+  color: black;
+}
+
+a:hover,
+a:active {
+  color: lightgray;
+}
+
+.navigation-items {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+mat-selection-list mat-list-option a {
+  text-decoration: none;
+  color: black;
+}
+
+mat-nav-list a:hover,
+a:active {
+  color: blueviolet;
+}
+
+.nav-link {
+  color: blueviolet;
+}
+
+.mat-list-item-text {
+  margin-left: 10px;
+}
+
+.mat-expansion-panel { 
+  box-shadow: none;
+  border-radius: 0px;
+  left: -8px;
+  margin-right: -10px;
+}
