@@ -129,9 +129,26 @@ namespace Service_Layer.Services
 
             if (pagedMenus != null)
             {
-                foreach (var Menu in pagedMenus)
+                foreach (var menu in pagedMenus)
                 {
-                    MenuDto dto = _mapper.Map<MenuDto>(Menu);
+                    MenuDto dto = _mapper.Map<MenuDto>(menu);
+
+                    if (!string.IsNullOrEmpty(menu.UserRoles))
+                    {
+                        var userRoleList = menu.UserRoles.Split(',').Select(int.Parse).ToList();
+                        foreach (var item in userRoleList)
+                        {
+                            var role = await _unitOfWork.Role.Get(item);
+                            dto.Roles.Add(_mapper.Map<RoleDto>(role));
+                        };
+                    }
+
+                    if (menu.MainMenuId > 0)
+                    {
+                        var mainMenu = await _unitOfWork.Menu.Get(menu.MainMenuId);
+                        dto.MainMenuName = mainMenu.Title;
+                    }
+
                     menuDtos.Add(dto);
                 }
             }
@@ -156,6 +173,55 @@ namespace Service_Layer.Services
                 && x.IsVisible))
             .Select(x => new MainMenusDto { Id = x.Id, Title = x.Title })
             .ToList();
+        }
+
+        public List<UserMenuDto> GetCurrentUserMenus()
+        {
+
+            var currentUserRoles = CurrentUser.User.UserRole;
+
+            List<UserMenuDto> userMenuDtos = new List<UserMenuDto>();
+
+            foreach (var role in currentUserRoles)
+            {
+                userMenuDtos = _unitOfWork.Menu
+            .FindAll(
+                x => x.UserRoles.Contains(role.Id.ToString())
+                && x.IsActive
+                && x.IsVisible
+                )
+                .Select(x => new UserMenuDto
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    SortId = x.SortId,
+                    IconName = x.IconName,
+                    Link = x.Link,
+                    MainMenuId = x.MainMenuId
+                })
+                .OrderBy(x => x.SortId)
+                .ToList();
+            }
+
+            List<UserMenuDto> userMenuDtosOut = new List<UserMenuDto>();
+
+            foreach (var menu in userMenuDtos.OrderBy(z => z.MainMenuId))
+            {
+                if (menu.MainMenuId == 0 && (userMenuDtosOut.Find(z => z.Id == menu.Id) == null))
+                {
+                    // if (userMenuDtos.Where(z => z.MainMenuId == menu.Id).Count() >= 1)
+                    menu.SubMenu = new List<UserMenuDto>();
+
+                    userMenuDtosOut.Add(menu);
+                }
+                else if (menu.MainMenuId != 0 && (userMenuDtosOut.Find(z => z.Id == menu.Id) == null))
+                {
+                    var index = userMenuDtosOut.FindIndex(z => z.Id == menu.MainMenuId);
+                    userMenuDtosOut.ElementAt(index).SubMenu.Add(menu);
+                }
+            }
+
+            return userMenuDtosOut;
         }
 
         public async Task<bool> Remove(int id)

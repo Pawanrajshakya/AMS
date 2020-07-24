@@ -13,7 +13,6 @@ mat-drawer-content {
 
 li {
   list-style: none;
-  font-size: large;
 }
 
 a {
@@ -21,11 +20,7 @@ a {
   color: white;
 }
 
-mat-drawer div a {
-  color: black;
-}
-
-a:hover,
+/* a:hover,
 a:active {
   color: lightgray;
 }
@@ -41,17 +36,17 @@ mat-selection-list mat-list-option a {
   color: black;
 }
 
-mat-nav-list a:hover,
+/* mat-nav-list a:hover,
 a:active {
   color: blueviolet;
 }
 
 .nav-link {
   color: blueviolet;
-}
+} */
 
 .mat-list-item-text {
-  margin-left: 10px;
+  margin-left: 4px;
 }
 
 .mat-expansion-panel { 
@@ -59,4 +54,8 @@ a:active {
   border-radius: 0px;
   left: -8px;
   margin-right: -10px;
+}
+
+.subMenu {
+  color: rgb(6, 6, 90);
 }

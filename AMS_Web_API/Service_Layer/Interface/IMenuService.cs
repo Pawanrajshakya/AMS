@@ -7,5 +7,6 @@ namespace Service_Layer.Interface
     IUpdateService<MenuToEditDto>, IGetService<MenuDto>, IGetWithPaginationService<MenusDto>
     {
          List<MainMenusDto> GetMainMenus(int id);
+         List<UserMenuDto>  GetCurrentUserMenus();
     }
 }

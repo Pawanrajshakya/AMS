@@ -16,6 +16,7 @@ namespace Service_Layer.Dtos.Menu
         public string Link { get; set; }
         public string IconName { get; set; }
         public int MainMenuId { get; set; }
+        public string MainMenuName { get; set; }
         public int SortId { get; set; }
         public bool IsActive { get; set; }
         public System.DateTime CreatedDate { get; set; }

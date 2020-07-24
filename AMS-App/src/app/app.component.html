@@ -12,16 +12,16 @@
     <ul fxLayout
         fxLayoutGap="16px"
         class="navigation-items">
-      <li *ngIf="!!(isLoading$ | async)">Welcome {{(usernameToDisplay$ | async).toUpperCase()}}</li>
-      <li *ngIf="!!(isLoading$ | async)"
+      <li *ngIf="!!(isAuthenticated$ | async)">Welcome {{(usernameToDisplay$ | async).toUpperCase()}}</li>
+      <li *ngIf="!!(isAuthenticated$ | async)"
           (click)="onChangePassword()"
           matTooltip="Change Password"><i class="fa fa-key"></i></li>
       <li><a routerLink="/login"
-           *ngIf="!(isLoading$ | async)"
+           *ngIf="!(isAuthenticated$ | async)"
            matTooltip="Sign In">Sign In <i class="fa fa-sign-in"></i></a></li>
       <li><a routerLink="/login"
            (click)="onSignOut()"
-           *ngIf="!!(isLoading$ | async)"
+           *ngIf="!!(isAuthenticated$ | async)"
            matTooltip="Sign Out"><i class="fa fa-sign-out"></i></a></li>
     </ul>
   </div>
@@ -31,26 +31,26 @@
               role="heading"
               mode="side"
               opened>
-    <mat-nav-list *ngIf="!!(isLoading$ | async)">
+    <mat-nav-list *ngIf="!!(isAuthenticated$ | async)">
       <mat-accordion displayMode="flat"
                      multi="true"
                      #accordion="matAccordion">
         <div *ngFor="let menu of myMenu">
-          <div *ngIf="!menu.hasSubMenu">
+          <div *ngIf="menu.subMenu?.length === 0">
             <a mat-list-item
-               [routerLink]="menu.link"> <i [class]="menu.icon"></i><span
+               [routerLink]="menu.link"> <i [class]="menu.iconName"></i><span
                     class="mat-list-item-text">{{menu.title}}</span></a>
           </div>
-          <div *ngIf="!!menu.hasSubMenu">
+          <div *ngIf="menu.subMenu?.length > 0">
             <mat-expansion-panel [expanded]="menu.isExpanded">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  <i [class]="menu.icon"></i><span class="mat-list-item-text">{{menu.title}}</span>
+                  <i [class]="menu.iconName"></i><span class="mat-list-item-text">{{menu.title}}</span>
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <mat-list dense>
-                <a [routerLink]="item.link" mat-list-item *ngFor="let item of menu.subMenus">
-                  <i [class]="item.icon"></i><span class="mat-list-item-text">{{item.title}}</span> </a>
+              <mat-list>
+                <a [routerLink]="item.link" mat-list-item *ngFor="let item of menu.subMenu">
+                  <i [class]="item.iconName"></i><span class="mat-list-item-text subMenu">{{item.title}}</span> </a>
               </mat-list>
             </mat-expansion-panel>
           </div>

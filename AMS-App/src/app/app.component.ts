@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ChangePasswordComponent } from 'src/auth/components/changePassword/changePassword.component';
 import { LoginState, selectIsAuthenticated, selectAuthenticatedUser } from 'src/auth/store';
 import { Store, select } from '@ngrx/store';
+import { IMenu } from 'src/_models/menu-data';
 
 @Component({
   selector: 'app-root',
@@ -18,88 +19,9 @@ export class AppComponent implements AfterContentInit {
 
   @ViewChild('accordion', { static: true }) Accordion: MatAccordion;
 
-  myMenu = [
-    {
-      id: 1,
-      title: 'Home',
-      link: 'home',
-      isDisabled: false,
-      isExpanded: false,
-      hasSubMenu: false,
-      icon: 'fa fa-home'
-    }, {
-      id: 2,
-      title: 'Account',
-      link: 'listUser',
-      isDisabled: false,
-      isExpanded: false,
-      hasSubMenu: false,
-      icon: 'fa fa-user-circle'
-    }, {
-      id: 3,
-      title: 'Transaction',
-      link: 'listUser',
-      isDisabled: false,
-      isExpanded: false,
-      hasSubMenu: false,
-      icon: 'fa fa-money'
-    }, {
-      id: 4,
-      title: 'Reports',
-      link: 'listUser',
-      isDisabled: false,
-      isExpanded: true,
-      hasSubMenu: true,
-      icon: 'fa fa-list',
-      subMenus: [{
-        id: 5,
-        title: 'Menu Setup',
-        link: 'menu',
-        isDisabled: false,
-        icon: 'fa fa-linode'
-      }]
-    }, {
-      id: 6,
-      title: 'Code Setup',
-      link: 'code',
-      isDisabled: false,
-      isExpanded: true,
-      hasSubMenu: true,
-      icon: 'fa fa-linode',
-      subMenus: [{
-        id: 7,
-        title: 'Role',
-        link: 'role',
-        isDisabled: false,
-        icon: 'fa fa-user'
-      },
-      {
-        id: 8,
-        title: 'Menu',
-        link: 'menu',
-        isDisabled: false,
-        icon: 'fa fa-linode'
-      }]
-    }, {
-      id: 9,
-      title: 'Settings',
-      link: 'listUser',
-      isDisabled: false,
-      isExpanded: false,
-      hasSubMenu: false,
-      icon: 'fa fa-cogs'
-    }, {
-      id: 10,
-      title: 'User',
-      link: 'user',
-      isDisabled: false,
-      isExpanded: false,
-      hasSubMenu: false,
-      icon: 'fa fa-users'
-    }
-  ];
+  myMenu: IMenu[];
 
-  isLoading$: Observable<boolean>;
+  isAuthenticated$: Observable<boolean>;
   usernameToDisplay$: Observable<string>;
 
   constructor(
@@ -108,8 +30,18 @@ export class AppComponent implements AfterContentInit {
     private store: Store<LoginState>) { }
 
   ngAfterContentInit(): void {
-    this.isLoading$ = this.store.pipe(select(selectIsAuthenticated));
+    this.isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
     this.usernameToDisplay$ = this.store.pipe(select(selectAuthenticatedUser));
+
+    this.isAuthenticated$.subscribe((isAuthenticated) => {
+      console.log('isAuthenticated', isAuthenticated);
+      if (isAuthenticated) {
+        this.authService.getCurrentUserMenu().subscribe((menus) => {
+          console.log('menus', menus);
+          this.myMenu = menus;
+        })
+      }
+    })
   }
 
   onSignOut() {

@@ -18,7 +18,7 @@ import { MenuDeleteComponent } from '../menu-delete/menu-delete.component';
 
 export class MenuListComponent implements AfterViewInit, OnInit {
 
-  columnsToDisplay = ['title', 'edit', 'delete'];
+  columnsToDisplay = ['title', 'sortId', 'link', 'mainMenuName', 'roles', 'edit', 'delete'];
 
   data: IMenu[];
 

@@ -14,6 +14,7 @@ import { AlertService } from '../../_services/alert.service';
 import { LoginState } from 'src/auth/store';
 
 import * as fromAction from '../store/auth.actions';
+import { IMenus, IMenu } from 'src/_models/menu-data';
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +88,10 @@ export class AuthService {
       this.store.dispatch(fromAction.loadAuthsSuccess({ data: { username: this.currentUser.username, password: '' } }));
       console.log(this.currentUser);
     });
+  }
+
+  getCurrentUserMenu(){
+    return this.http.get<IMenu[]>(this.baseUrl + 'menu\\mymenu');
   }
 
 }

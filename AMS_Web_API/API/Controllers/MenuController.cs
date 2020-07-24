@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using API.Helpers;
 using Microsoft.AspNetCore.Authorization;
@@ -87,6 +89,19 @@ namespace API.Controllers
                     return Ok(menus);
 
                 return BadRequest();
+            }
+            catch (System.Exception e)
+            {
+                return HandleException(e);
+            }
+        }
+
+        [HttpGet("MyMenu")]
+        public IActionResult GetMyMenu()
+        {
+            try
+            {
+                return Ok(_serviceManager.Menu.GetCurrentUserMenus());
             }
             catch (System.Exception e)
             {
