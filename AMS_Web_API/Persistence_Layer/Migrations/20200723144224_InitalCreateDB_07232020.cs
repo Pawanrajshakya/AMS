@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence_Layer.Migrations
 {
-    public partial class InitalCreateDB_07_15 : Migration
+    public partial class InitalCreateDB_07232020 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -426,21 +426,38 @@ namespace Persistence_Layer.Migrations
             migrationBuilder.InsertData(
                 table: "Businesses",
                 columns: new[] { "Id", "Address1", "Address2", "CreatedBy", "CreatedDate", "Description", "IsActive", "IsVisible", "LastModifiedBy", "LastModifiedDate", "Name", "State", "ZipCode" },
-                values: new object[] { 1, "Address 1", "Address 2", 0, new DateTime(2020, 7, 15, 9, 26, 56, 799, DateTimeKind.Local).AddTicks(9880), null, true, true, 0, new DateTime(2020, 7, 15, 9, 26, 56, 799, DateTimeKind.Local).AddTicks(9900), "Business Name", "zz", "zzzzz" });
+                values: new object[] { 1, "Address 1", "Address 2", 0, new DateTime(2020, 7, 23, 10, 42, 23, 905, DateTimeKind.Local).AddTicks(9519), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 905, DateTimeKind.Local).AddTicks(9542), "Business Name", "zz", "zzzzz" });
 
             migrationBuilder.InsertData(
                 table: "Groups",
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "IsActive", "IsVisible", "LastModifiedBy", "LastModifiedDate", "SortId" },
-                values: new object[] { 1, 0, new DateTime(2020, 7, 15, 9, 26, 56, 800, DateTimeKind.Local).AddTicks(4530), "New Group", true, true, 0, new DateTime(2020, 7, 15, 9, 26, 56, 800, DateTimeKind.Local).AddTicks(4560), 0 });
+                values: new object[] { 1, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(1644), "New Group", true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(1663), 0 });
+
+            migrationBuilder.InsertData(
+                table: "Menus",
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "IconName", "IsActive", "IsVisible", "LastModifiedBy", "LastModifiedDate", "Link", "MainMenuId", "SortId", "Title", "UserRoles" },
+                values: new object[,]
+                {
+                    { 1, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(2525), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(2544), "home", 0, 1, "Home", "1,2,3" },
+                    { 2, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(3879), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(3895), "account", 0, 2, "Account", "1,2,3" },
+                    { 3, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(3948), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(3952), "transaction", 0, 3, "Transaction", "1,2,3" },
+                    { 4, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4014), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4018), "report", 0, 4, "Reports", "1,2,3" },
+                    { 5, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4023), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4026), "code", 0, 5, "Code System", "1,2,3" },
+                    { 6, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4030), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4034), "setting", 0, 6, "Setting", "1,2,3" },
+                    { 7, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4038), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4041), "tool", 0, 7, "Tools", "1,2,3" },
+                    { 8, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4045), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4048), "menu", 5, 1, "Menu", "1,2,3" },
+                    { 9, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4052), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4055), "role", 6, 1, "Role", "1,2,3" },
+                    { 10, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4059), null, true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4062), "yser", 6, 2, "User", "1,2,3" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Description", "IsActive", "IsVisible", "LastModifiedBy", "LastModifiedDate" },
                 values: new object[,]
                 {
-                    { 1, 0, new DateTime(2020, 7, 15, 9, 26, 56, 784, DateTimeKind.Local).AddTicks(8760), "Admin", true, true, 0, new DateTime(2020, 7, 15, 9, 26, 56, 797, DateTimeKind.Local).AddTicks(9890) },
-                    { 2, 0, new DateTime(2020, 7, 15, 9, 26, 56, 798, DateTimeKind.Local).AddTicks(3270), "User", true, true, 0, new DateTime(2020, 7, 15, 9, 26, 56, 798, DateTimeKind.Local).AddTicks(3310) },
-                    { 3, 0, new DateTime(2020, 7, 15, 9, 26, 56, 798, DateTimeKind.Local).AddTicks(3370), "Viewer", true, true, 0, new DateTime(2020, 7, 15, 9, 26, 56, 798, DateTimeKind.Local).AddTicks(3370) }
+                    { 1, 0, new DateTime(2020, 7, 23, 10, 42, 23, 902, DateTimeKind.Local).AddTicks(441), "Admin", true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 904, DateTimeKind.Local).AddTicks(5794) },
+                    { 2, 0, new DateTime(2020, 7, 23, 10, 42, 23, 904, DateTimeKind.Local).AddTicks(8121), "User", true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 904, DateTimeKind.Local).AddTicks(8155) },
+                    { 3, 0, new DateTime(2020, 7, 23, 10, 42, 23, 904, DateTimeKind.Local).AddTicks(8215), "Viewer", true, true, 0, new DateTime(2020, 7, 23, 10, 42, 23, 904, DateTimeKind.Local).AddTicks(8219) }
                 });
 
             migrationBuilder.CreateIndex(

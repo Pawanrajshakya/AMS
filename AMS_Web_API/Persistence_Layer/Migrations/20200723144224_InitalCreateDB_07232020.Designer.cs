@@ -10,8 +10,8 @@ using Persistence_Layer.Data;
 namespace Persistence_Layer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200715132657_InitalCreateDB_07_15")]
-    partial class InitalCreateDB_07_15
+    [Migration("20200723144224_InitalCreateDB_07232020")]
+    partial class InitalCreateDB_07232020
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -326,11 +326,11 @@ namespace Persistence_Layer.Migrations
                             Address1 = "Address 1",
                             Address2 = "Address 2",
                             CreatedBy = 0,
-                            CreatedDate = new DateTime(2020, 7, 15, 9, 26, 56, 799, DateTimeKind.Local).AddTicks(9880),
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 905, DateTimeKind.Local).AddTicks(9519),
                             IsActive = true,
                             IsVisible = true,
                             LastModifiedBy = 0,
-                            LastModifiedDate = new DateTime(2020, 7, 15, 9, 26, 56, 799, DateTimeKind.Local).AddTicks(9900),
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 905, DateTimeKind.Local).AddTicks(9542),
                             Name = "Business Name",
                             State = "zz",
                             ZipCode = "zzzzz"
@@ -426,12 +426,12 @@ namespace Persistence_Layer.Migrations
                         {
                             Id = 1,
                             CreatedBy = 0,
-                            CreatedDate = new DateTime(2020, 7, 15, 9, 26, 56, 800, DateTimeKind.Local).AddTicks(4530),
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(1644),
                             Description = "New Group",
                             IsActive = true,
                             IsVisible = true,
                             LastModifiedBy = 0,
-                            LastModifiedDate = new DateTime(2020, 7, 15, 9, 26, 56, 800, DateTimeKind.Local).AddTicks(4560),
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(1663),
                             SortId = 0
                         });
                 });
@@ -488,6 +488,158 @@ namespace Persistence_Layer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Menus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(2525),
+                            IsActive = true,
+                            IsVisible = true,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(2544),
+                            Link = "home",
+                            MainMenuId = 0,
+                            SortId = 1,
+                            Title = "Home",
+                            UserRoles = "1,2,3"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(3879),
+                            IsActive = true,
+                            IsVisible = true,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(3895),
+                            Link = "account",
+                            MainMenuId = 0,
+                            SortId = 2,
+                            Title = "Account",
+                            UserRoles = "1,2,3"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(3948),
+                            IsActive = true,
+                            IsVisible = true,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(3952),
+                            Link = "transaction",
+                            MainMenuId = 0,
+                            SortId = 3,
+                            Title = "Transaction",
+                            UserRoles = "1,2,3"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4014),
+                            IsActive = true,
+                            IsVisible = true,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4018),
+                            Link = "report",
+                            MainMenuId = 0,
+                            SortId = 4,
+                            Title = "Reports",
+                            UserRoles = "1,2,3"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4023),
+                            IsActive = true,
+                            IsVisible = true,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4026),
+                            Link = "code",
+                            MainMenuId = 0,
+                            SortId = 5,
+                            Title = "Code System",
+                            UserRoles = "1,2,3"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4030),
+                            IsActive = true,
+                            IsVisible = true,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4034),
+                            Link = "setting",
+                            MainMenuId = 0,
+                            SortId = 6,
+                            Title = "Setting",
+                            UserRoles = "1,2,3"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4038),
+                            IsActive = true,
+                            IsVisible = true,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4041),
+                            Link = "tool",
+                            MainMenuId = 0,
+                            SortId = 7,
+                            Title = "Tools",
+                            UserRoles = "1,2,3"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4045),
+                            IsActive = true,
+                            IsVisible = true,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4048),
+                            Link = "menu",
+                            MainMenuId = 5,
+                            SortId = 1,
+                            Title = "Menu",
+                            UserRoles = "1,2,3"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4052),
+                            IsActive = true,
+                            IsVisible = true,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4055),
+                            Link = "role",
+                            MainMenuId = 6,
+                            SortId = 1,
+                            Title = "Role",
+                            UserRoles = "1,2,3"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4059),
+                            IsActive = true,
+                            IsVisible = true,
+                            LastModifiedBy = 0,
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 906, DateTimeKind.Local).AddTicks(4062),
+                            Link = "yser",
+                            MainMenuId = 6,
+                            SortId = 2,
+                            Title = "User",
+                            UserRoles = "1,2,3"
+                        });
                 });
 
             modelBuilder.Entity("Persistence_Layer.Models.Relationship", b =>
@@ -572,34 +724,34 @@ namespace Persistence_Layer.Migrations
                         {
                             Id = 1,
                             CreatedBy = 0,
-                            CreatedDate = new DateTime(2020, 7, 15, 9, 26, 56, 784, DateTimeKind.Local).AddTicks(8760),
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 902, DateTimeKind.Local).AddTicks(441),
                             Description = "Admin",
                             IsActive = true,
                             IsVisible = true,
                             LastModifiedBy = 0,
-                            LastModifiedDate = new DateTime(2020, 7, 15, 9, 26, 56, 797, DateTimeKind.Local).AddTicks(9890)
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 904, DateTimeKind.Local).AddTicks(5794)
                         },
                         new
                         {
                             Id = 2,
                             CreatedBy = 0,
-                            CreatedDate = new DateTime(2020, 7, 15, 9, 26, 56, 798, DateTimeKind.Local).AddTicks(3270),
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 904, DateTimeKind.Local).AddTicks(8121),
                             Description = "User",
                             IsActive = true,
                             IsVisible = true,
                             LastModifiedBy = 0,
-                            LastModifiedDate = new DateTime(2020, 7, 15, 9, 26, 56, 798, DateTimeKind.Local).AddTicks(3310)
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 904, DateTimeKind.Local).AddTicks(8155)
                         },
                         new
                         {
                             Id = 3,
                             CreatedBy = 0,
-                            CreatedDate = new DateTime(2020, 7, 15, 9, 26, 56, 798, DateTimeKind.Local).AddTicks(3370),
+                            CreatedDate = new DateTime(2020, 7, 23, 10, 42, 23, 904, DateTimeKind.Local).AddTicks(8215),
                             Description = "Viewer",
                             IsActive = true,
                             IsVisible = true,
                             LastModifiedBy = 0,
-                            LastModifiedDate = new DateTime(2020, 7, 15, 9, 26, 56, 798, DateTimeKind.Local).AddTicks(3370)
+                            LastModifiedDate = new DateTime(2020, 7, 23, 10, 42, 23, 904, DateTimeKind.Local).AddTicks(8219)
                         });
                 });
 
