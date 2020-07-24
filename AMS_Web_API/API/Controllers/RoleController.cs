@@ -9,7 +9,7 @@ using Service_Layer.Interface;
 
 namespace API.Controllers
 {
-    [ServiceFilter(typeof(LogUserActivity))]
+    [ServiceFilter(typeof(CustomActionFilter))]
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
