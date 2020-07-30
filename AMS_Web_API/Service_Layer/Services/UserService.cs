@@ -285,7 +285,7 @@ namespace Service_Layer.Services
 
         public async Task<UserDto> FindBy(string username)
         {
-            var user = await _unitOfWork.User.Find(x => x.UserName.ToLower() == username.ToLower());
+            var user = await _unitOfWork.User.Find(x => x.UserName.ToLower() == (username??"").ToLower());
 
             if (user == null)
                 return null;

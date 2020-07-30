@@ -13,7 +13,7 @@ using Service_Layer.Interface;
 
 namespace API.Controllers
 {
-    [ServiceFilter(typeof(CustomActionFilter))]
+    //[ServiceFilter(typeof(CustomActionFilter))]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : BaseApiController
